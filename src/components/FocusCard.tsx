@@ -2,7 +2,7 @@
 "use client";
 
 import { useState, useEffect } from 'react';
-import { motion, PanInfo } from 'framer-motion';
+import { motion, PanInfo, useDragControls } from 'framer-motion';
 import { X, TrendingUp, MessageCircle } from 'lucide-react';
 
 interface FocusCardProps {
@@ -11,6 +11,7 @@ interface FocusCardProps {
 }
 
 export default function FocusCard({ topic, onClose }: FocusCardProps) {
+  const controls = useDragControls();
 
   const handleDragEnd = (event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
     if (info.offset.y > 100) {
@@ -59,11 +60,18 @@ export default function FocusCard({ topic, onClose }: FocusCardProps) {
         drag="y"
         dragConstraints={{ top: 0, bottom: 0 }}
         dragElastic={{ top: 0, bottom: 0.5 }}
+        dragListener={false}
+        dragControls={controls}
         onDragEnd={handleDragEnd}
         className="w-full max-w-md bg-gray-900 border border-white/10 rounded-t-3xl sm:rounded-3xl p-6 relative z-10 shadow-2xl h-[85vh] sm:h-auto sm:max-h-[80vh] overflow-y-auto"
       >
 
-        <div className="w-12 h-1.5 bg-white/20 rounded-full mx-auto mb-6" />
+        <div 
+          onPointerDown={(e) => controls.start(e)}
+          className="w-full py-4 -mt-4 mb-2 flex justify-center cursor-grab active:cursor-grabbing touch-none"
+        >
+          <div className="w-12 h-1.5 bg-white/20 rounded-full" />
+        </div>
 
         <div className="flex justify-between items-start mb-6">
           <h2 className="text-3xl font-bold font-outfit bg-clip-text text-transparent bg-linear-to-r from-white to-white/50">{topic}</h2>
