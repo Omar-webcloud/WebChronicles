@@ -1,6 +1,7 @@
 
 "use client";
 
+import { useState, useEffect } from 'react';
 import { motion, PanInfo } from 'framer-motion';
 import { X, TrendingUp, MessageCircle } from 'lucide-react';
 
@@ -16,6 +17,33 @@ export default function FocusCard({ topic, onClose }: FocusCardProps) {
       onClose();
     }
   };
+
+  const [context, setContext] = useState<string>("");
+  const [loading, setLoading] = useState<boolean>(true);
+
+  useEffect(() => {
+    const fetchContext = async () => {
+      setLoading(true);
+      setContext("");
+      try {
+        const response = await fetch(`https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(topic)}`);
+        const data = await response.json();
+        if (data.extract) {
+          setContext(data.extract);
+        } else {
+           setContext("Analysis of this topic continues. No immediate context available from the archives.");
+        }
+      } catch (error) {
+        setContext("Unable to retrieve context at this moment.");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    if (topic) {
+      fetchContext();
+    }
+  }, [topic]);
 
   return (
     <motion.div
@@ -82,11 +110,17 @@ export default function FocusCard({ topic, onClose }: FocusCardProps) {
 
           <div className="bg-white/5 p-5 rounded-2xl border border-white/5">
              <h3 className="text-sm text-white/50 uppercase tracking-widest mb-4">Context</h3>
-             <p className="text-white/80 leading-relaxed font-light">
-               This topic dominated online discourse for 48 hours. 
-               The sentiment shifted rapidly from confusion to outrage, 
-               generating millions of interactions across major platforms.
-             </p>
+             {loading ? (
+                <div className="space-y-2 animate-pulse">
+                  <div className="h-4 bg-white/10 rounded w-3/4"></div>
+                  <div className="h-4 bg-white/10 rounded w-full"></div>
+                  <div className="h-4 bg-white/10 rounded w-5/6"></div>
+                </div>
+              ) : (
+                <p className="text-white/80 leading-relaxed font-light">
+                  {context}
+                </p>
+              )}
           </div>
 
 
