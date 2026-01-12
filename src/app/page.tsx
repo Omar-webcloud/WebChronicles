@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useChronicleStore } from '@/store/chronicleStore';
 import MoodBackground from '@/components/MoodBackground';
@@ -16,11 +16,7 @@ export default function Home() {
   const { selectedDate, chronicleData, isLoading } = useChronicleStore();
   const [selectedTopic, setSelectedTopic] = useState<string | null>(null);
 
-  // Initial load
-  useEffect(() => {
-    // Maybe set initial mood or date?
-    // PRD says Entry: "What did the internet feel like today?"
-  }, []);
+
 
 
 
@@ -30,7 +26,7 @@ export default function Home() {
 
       <AnimatePresence mode="wait">
         
-        {/* Landing View / Header */}
+
         {!selectedDate && (
           <motion.div 
              key="landing-header"
@@ -50,7 +46,7 @@ export default function Home() {
                What did the internet feel like today?
              </p>
              
-             {/* Hints */}
+
              <div className="mt-12 opacity-50 text-sm font-mono tracking-widest flex gap-8">
                <span>FEAR</span>
                <span>HOPE</span>
@@ -59,7 +55,7 @@ export default function Home() {
           </motion.div>
         )}
 
-        {/* Chronicle View Content */}
+
         {selectedDate && chronicleData && !isLoading && (
           <motion.div
              key="chronicle-content"
@@ -69,10 +65,10 @@ export default function Home() {
              exit={{ opacity: 0 }}
              transition={{ duration: 1 }}
           >
-             {/* Headlines in background */}
+
              <HeadlineCloud headlines={chronicleData.headlines} />
 
-             {/* Signals floating */}
+
              <div className="absolute inset-0 z-10 pointer-events-none">
                 {chronicleData.signals.map((signal, i) => (
                    <FloatingSignal 
@@ -84,7 +80,7 @@ export default function Home() {
                 ))}
              </div>
              
-             {/* Description Text */}
+
              <motion.div 
                initial={{ opacity: 0, y: 20 }}
                animate={{ opacity: 1, y: 0 }}
@@ -96,10 +92,10 @@ export default function Home() {
                 </p>
              </motion.div>
 
-             {/* Back Button */}
 
 
-             {/* Highlighted News Floater */}
+
+
              {chronicleData.highlightedNews && (
                  <NewsFloater data={chronicleData.highlightedNews} />
              )}
@@ -109,7 +105,7 @@ export default function Home() {
       
       </AnimatePresence>
 
-      {/* Loading State */}
+
       {selectedDate && isLoading && (
          <div className="fixed inset-0 z-30 flex items-center justify-center bg-black/20 backdrop-blur-sm">
              <motion.div 
@@ -120,12 +116,12 @@ export default function Home() {
          </div>
       )}
 
-      {/* Bottom Slider Area */}
-      <div className="w-full relative z-20 pb-8 pt-4 bg-gradient-to-t from-black/80 via-black/40 to-transparent">
+
+      <div className="w-full relative z-20 pb-8 pt-4 bg-linear-to-t from-black/80 via-black/40 to-transparent">
          <TimeSlider />
       </div>
 
-      {/* Focus Card Modal */}
+
       <AnimatePresence>
         {selectedTopic && (
           <FocusCard 

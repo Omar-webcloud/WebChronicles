@@ -19,32 +19,32 @@ export default function MoodBackground() {
     const year = new Date(selectedDate).getFullYear();
     switch (year) {
       case 2005:
-        // Retro Web 2.0 / Broadcast Era - Blue/Orange with Noise
+
         gradient = 'linear-gradient(to bottom right, #2563eb, #f97316)'; 
         showNoise = true;
         break;
       case 2022:
-        // Modern AI / ChatGPT Era - Deep Purple/Cyan (Sleek)
+
         gradient = 'linear-gradient(to bottom right, #4c1d95, #0ea5e9, #f472b6)';
         showNoise = false;
         break;
       case 2026:
-        // Future / Hope - Emerald/Teal/White (Clean, Modern, Abundance)
+
         gradient = 'linear-gradient(to bottom right, #059669, #0d9488, #2dd4bf)';
         showNoise = false;
         break;
       case 2016:
-        // Pokemon Go / Elections - Intense Red/Blue mix
+
         gradient = 'linear-gradient(to bottom right, #dc2626, #2563eb, #1e3a8a)';
         showNoise = false;
         break;
       case 2020:
-        // Pandemic - Grey/Red/Dark
+
         gradient = 'linear-gradient(to bottom right, #1f2937, #7f1d1d, #000000)';
         showNoise = false;
         break;
       case 2009:
-          // Bitcoin/Financial Crisis - Gold/Black/Grey
+
         gradient = 'linear-gradient(to bottom right, #fbbf24, #374151, #000000)';
         showNoise = false;
         break;
@@ -63,7 +63,7 @@ export default function MoodBackground() {
         animate={{ opacity: 1 }}
       />
       
-      {/* Noise Overlay - Only for 2005 */}
+
       <motion.div 
         className="fixed inset-0 z-0 pointer-events-none opacity-20 bg-noise"
         initial={{ opacity: 0 }}

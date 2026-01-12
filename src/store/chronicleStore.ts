@@ -8,8 +8,7 @@ interface ChronicleState {
   currentMood: Mood;
   chronicleData: ChronicleData | null;
   isLoading: boolean;
-  
-  // Actions
+
   setDate: (date: string | null) => void;
   setDragging: (isDragging: boolean) => void;
   setMood: (mood: Mood) => void;

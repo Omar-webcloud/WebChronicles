@@ -9,7 +9,7 @@ export function DeveloperMenu() {
 
   return (
     <div className="fixed top-6 right-6 z-50 flex flex-col items-end">
-      {/* Trigger Button */}
+
       <motion.button
         onClick={() => setIsOpen(!isOpen)}
         className="flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full text-white/80 hover:bg-white/20 hover:text-white transition-all shadow-lg"
@@ -20,7 +20,7 @@ export function DeveloperMenu() {
         <span className="text-sm font-medium">Developer Info</span>
       </motion.button>
 
-      {/* Menu Content */}
+
       <AnimatePresence>
         {isOpen && (
           <motion.div
