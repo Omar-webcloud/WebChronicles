@@ -32,7 +32,7 @@ export default function FocusCard({ topic, onClose }: FocusCardProps) {
         dragConstraints={{ top: 0, bottom: 0 }}
         dragElastic={{ top: 0, bottom: 0.5 }}
         onDragEnd={handleDragEnd}
-        className="w-full max-w-lg bg-gray-900 border border-white/10 rounded-t-3xl sm:rounded-3xl p-6 relative z-10 shadow-2xl h-[85vh] sm:h-auto overflow-y-auto"
+        className="w-full max-w-md bg-gray-900 border border-white/10 rounded-t-3xl sm:rounded-3xl p-6 relative z-10 shadow-2xl h-[85vh] sm:h-auto sm:max-h-[80vh] overflow-y-auto"
       >
 
         <div className="w-12 h-1.5 bg-white/20 rounded-full mx-auto mb-6" />
