@@ -58,6 +58,9 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
+  verification: {
+    google: 'ltOHfaJHtxf2j6OxaHMl4iVZtYk7kfGFAnl8RvVxiI0',
+  },
   icons: {
     icon: "/logo.png",
     shortcut: "/logo.png",
