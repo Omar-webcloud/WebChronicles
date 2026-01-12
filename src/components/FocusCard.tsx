@@ -2,7 +2,7 @@
 "use client";
 
 import { motion, PanInfo } from 'framer-motion';
-import { X, TrendingUp, MessageCircle, Share2, BarChart2 } from 'lucide-react';
+import { X, TrendingUp, MessageCircle } from 'lucide-react';
 
 interface FocusCardProps {
   topic: string;
@@ -89,16 +89,7 @@ export default function FocusCard({ topic, onClose }: FocusCardProps) {
              </p>
           </div>
 
-           <div className="flex gap-4 pt-4">
-              <button className="flex-1 py-3 rounded-xl bg-white text-black font-semibold flex items-center justify-center gap-2 hover:bg-white/90 transition-colors">
-                 <BarChart2 className="w-4 h-4" />
-                 Explore Data
-              </button>
-              <button className="flex-1 py-3 rounded-xl bg-white/10 text-white font-semibold flex items-center justify-center gap-2 hover:bg-white/20 transition-colors">
-                 <Share2 className="w-4 h-4" />
-                 Share
-              </button>
-           </div>
+
 
         </div>
 

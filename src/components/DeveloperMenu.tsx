@@ -8,16 +8,16 @@ export function DeveloperMenu() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="fixed top-6 right-6 z-50 flex flex-col items-end">
+    <div className="fixed top-4 right-4 z-50 flex flex-col items-end">
 
       <motion.button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full text-white/80 hover:bg-white/20 hover:text-white transition-all shadow-lg"
+        className="flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full text-white/80 hover:bg-white/20 hover:text-white transition-all shadow-lg"
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
       >
-        <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-        <span className="text-sm font-medium">Developer Info</span>
+        <div className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-green-400 animate-pulse" />
+        <span className="text-xs md:text-sm font-medium">Developer Info</span>
       </motion.button>
 
 
