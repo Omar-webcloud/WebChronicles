@@ -22,12 +22,16 @@ function HeadlineItem({ text, index, total }: { text: string; index: number; tot
   const [coords, setCoords] = useState({ top: 0, left: 0, duration: 15 });
 
   useEffect(() => {
-    setCoords({
-      top: (index / total) * 80 + 10,
-      left: Math.random() * 60 + 20,
-      duration: 15 + Math.random() * 10
-    });
-  }, [index, total]);
+    
+    const timer = setTimeout(() => {
+      setCoords({
+        top: (index / total) * 80 + 10,
+        left: Math.random() * 60 + 20,
+        duration: 15 + Math.random() * 10
+      });
+    }, 0);
+    return () => clearTimeout(timer);
+  }, [index, total, text]);
 
   const delay = index * 0.5;
 
@@ -38,7 +42,7 @@ function HeadlineItem({ text, index, total }: { text: string; index: number; tot
       initial={{ opacity: 0, x: 100 }}
       animate={{ 
         opacity: [0, 0.3, 0], 
-        x: "-20vw" // drift left responsive
+        x: "-20vw" 
       }}
       transition={{
         duration: coords.duration,
