@@ -76,6 +76,22 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark" suppressHydrationWarning>
       <body className={`${outfit.variable} ${inter.variable} font-sans antialiased bg-black text-white overflow-x-hidden selection:bg-white/20`}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              "name": "WebChronicles",
+              "url": "https://web-chronicles.vercel.app",
+              "description": "A mobile-first time-travel experience through the internet's collective memory.",
+              "author": {
+                "@type": "Person",
+                "name": "Omar"
+              }
+            }),
+          }}
+        />
         <DeveloperMenu />
         {children}
       </body>
